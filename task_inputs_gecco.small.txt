@@ -1,0 +1,3 @@
+C29_H3K27ac	/srv/www/kundaje/annashch/gecco/H3K27ac/bed/C29_H3K27ac.nodup.tagAlign_x_C29_Input.nodup.tagAlign.naive_overlap.narrowPeak.filtered.noshort
+C29_H3K4me1	/srv/www/kundaje/annashch/gecco/H3K4me1/bed/C29_H3K4me1.nodup.tagAlign_x_C29_Input.nodup.tagAlign.naive_overlap.narrowPeak.filtered.noshort
+V576_DNase	/srv/www/kundaje/annashch/gecco/DNase/bed/V576.bed

@@ -1,9 +1,19 @@
-header="1\t24\nbigwig/Heterokaryon.bw:bigwig:{\"local_norm_halfwidth\":10000}\n" 
+header="1\t43\nbigwig/Heterokaryon.bw:bigwig:{\"local_norm_halfwidth\":10000}\n" 
 #all_labels=open("diffMatAnna.binarized.combined.thresholded.tsv",'r').read().strip().split('\n') 
 #sampled_labels=open("/srv/scratch/annashch/deeplearning/heterokaryon/inputs/newpeaks.long.labels.txt",'r').read().strip().split('\n') 
 #all_labels=open('specialized_peaks.SLICED.tsv','r').read().strip().split('\n') 
-all_labels=open('/srv/scratch/annashch/stemcells/het/anna_code/diffMatAnna.binarized.combined.thresholded.stringent.SLICED.tsv','r').read().strip().split('\n') 
-sampled_labels=open('/srv/scratch/annashch/deeplearning/heterokaryon/inputs/remapped.stringent.deeplift.labels.txt','r').read().strip().split('\n') 
+#all_labels=open('/srv/scratch/annashch/stemcells/het/anna_code/diffMatAnna.binarized.combined.thresholded.stringent.SLICED.tsv','r').read().strip().split('\n') 
+#sampled_labels=open('/srv/scratch/annashch/deeplearning/heterokaryon/inputs/remapped.stringent.deeplift.labels.txt','r').read().strip().split('\n') 
+
+
+#all_labels=open('debug.deeplift.input.tsv','r').read().strip().split('\n') 
+#sampled_labels=open('/srv/scratch/annashch/deeplearning/heterokaryon/track_input/debug.2kb.no/debug.2kb.no.labels.txt','r').read().strip().split('\n') 
+
+
+all_labels=open('debug.SLICED.tsv','r').read().strip().split('\n') 
+sampled_labels=open('/srv/scratch/annashch/deeplearning/heterokaryon/inputs/debug.labels.txt','r').read().strip().split('\n') 
+
+
 sampled_dict=dict() 
 for line in sampled_labels[1::]: 
     tokens=line.split('\t')

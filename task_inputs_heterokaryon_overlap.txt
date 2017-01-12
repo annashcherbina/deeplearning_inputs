@@ -1,0 +1,7 @@
+CC	/srv/scratch/annashch/stemcells/het/output/aggregate_heterokaryon_naive_overlap/CC.ppr.bed
+3hr	/srv/scratch/annashch/stemcells/het/output/aggregate_heterokaryon_naive_overlap/3hr.ppr.bed
+16hr	/srv/scratch/annashch/stemcells/het/output/aggregate_heterokaryon_naive_overlap/16hr.ppr.bed
+48hr	/srv/scratch/annashch/stemcells/het/output/aggregate_heterokaryon_naive_overlap/48hr.ppr.bed
+H1	/srv/scratch/annashch/stemcells/het/output/aggregate_heterokaryon_naive_overlap/H1.ppr.bed
+M5	/srv/scratch/annashch/stemcells/het/output/aggregate_heterokaryon_naive_overlap/M5.ppr.bed
+Hk	/srv/scratch/annashch/stemcells/het/output/aggregate_heterokaryon_naive_overlap/Hk.ppr.bed

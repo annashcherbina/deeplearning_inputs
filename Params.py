@@ -55,10 +55,11 @@ aligned_reads['18-H1_rep1']=7765690
 
 #parameters for sliding window 
 windowSize=2000 
-windowOverlap=2000
+#windowOverlap=2000
+windowOverlap=1000
 line_length=2000 
-jitterMax=15 
-jitterProb=0.05 
+jitterMax=15
+jitterProb=.10
 
 #parameters for data splitting/ FASTA extraction 
 external_data_dir = '/srv/scratch/annashch/deeplearning/heterokaryon/data/'
@@ -74,11 +75,11 @@ refseq = 'hg19.genome.fa'
 #out_labels = deeplearning_inputs_dir + 'specialized.deeplift.labels.txt'
 
 
-out_fasta = deeplearning_inputs_dir + 'regression.fasta'
-out_splits_train = deeplearning_inputs_dir + 'regression.train.txt'
-out_splits_test = deeplearning_inputs_dir + 'regression.test.txt'
-out_splits_validate = deeplearning_inputs_dir + 'regression.validate.txt'
-out_labels = deeplearning_inputs_dir + 'regression.labels.txt'
+out_fasta = deeplearning_inputs_dir + 'withNegatives.fasta'
+out_splits_train = deeplearning_inputs_dir + 'withNegatives.train.txt'
+out_splits_test = deeplearning_inputs_dir + 'withNegatives.test.txt'
+out_splits_validate = deeplearning_inputs_dir + 'withNegatives.validate.txt'
+out_labels = deeplearning_inputs_dir + 'withNegatives.labels.txt'
 
 #out_fasta = deeplearning_inputs_dir + 'remapped.fasta'
 #out_splits_train = deeplearning_inputs_dir + 'remapped.train.txt'
@@ -119,8 +120,8 @@ out_labels = deeplearning_inputs_dir + 'regression.labels.txt'
 #out_splits_validate = deeplearning_inputs_dir + 'heterokaryon.sliding.validate.txt'
 #out_labels = deeplearning_inputs_dir + 'heterokaryon.sliding.labels.txt'
 pluripotent_region_flank = 10000
-test_chroms = ['chr2', 'chr3']
-validation_chroms = ['chr1', 'chr4']
+test_chroms = ['chr18', 'chr19']
+validation_chroms = ['chr16', 'chr17']
 
 #augment the negative peaks, otherwise augment the positive peaks 
 jitter_minus=[3,4,5,6] 

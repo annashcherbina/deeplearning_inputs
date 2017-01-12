@@ -4,8 +4,26 @@ import pysam
 import random
 from Params import * 
 from generateSplits import * 
-import pdb 
-def make_fasta(bedfile, reffile, outfasta_name, line_length,sample=None):
+import pdb
+
+def make_fasta(ref_file,observed_bins,out_prefix):
+    outf=open(out_prefix+'.fasta','w')
+    ref_source=pysam.FastaFile(ref_file)
+    counter=0
+    total=str(len(observed_bins)) 
+    for observed_bin in observed_bins:
+        counter+=1
+        if counter%10000==0:
+            print str(counter) +'/'+total 
+        chrom=observed_bin[0]
+        pos_start=observed_bin[1]
+        pos_end=observed_bin[2] 
+        seq = ref_source.fetch(chrom, pos_start, pos_end)
+        peak_name='_'.join([str(i) for i in observed_bin])
+        outf.write('>'+peak_name+'\n'+seq+'\n')
+        
+'''   
+def make_fasta(bedfile, reffile, outfasta_name, line_length,sample=False):
     peak_names = dict()
     bedinput = open(bedfile, 'r').read().split('\n')
     print 'Read in BED coordinates'
@@ -13,7 +31,7 @@ def make_fasta(bedfile, reffile, outfasta_name, line_length,sample=None):
         bedinput.remove('')
     #if the "sample" argument is given, sample a subset of the peaks (mostly used for downsizing a dataset for model debugging purposes
     #MAKE SURE ALL PEAKS IN OUR TARGET REGION GET INCLUDED!!!! 
-    if sample: 
+    if sample !=False: 
         total=len(bedinput) 
         desired=sample 
         downsample_factor=desired*1.0/total 
@@ -36,7 +54,7 @@ def make_fasta(bedfile, reffile, outfasta_name, line_length,sample=None):
         #    continue 
         pos_start = int(tokens[1])
         pos_end = int(tokens[2]) 
-        if sample: 
+        if sample!=False: 
             inpluripotency_region=isPeakInPluripotencyRegion(pluripotency_dict,chrom,int(pos_start),int(pos_end)) 
             if not inpluripotency_region: 
                 prob=random.random() 
@@ -46,8 +64,14 @@ def make_fasta(bedfile, reffile, outfasta_name, line_length,sample=None):
         toadd=line_length-peak_length 
         flank=toadd/2
         peak_name = tokens[3]
+        #print "toadd:"+str(toadd) 
+        #print "flank:"+str(flank) 
+        #print "peak_name:"+str(peak_name) 
+
+        #pdb.set_trace() 
         #if flank < 0 (i.e. peak is too wide) split into multiple peaks! 
         if flank>=0:
+            #print "flank > 0" 
             pos_start=pos_start-flank-1 
             if toadd%2==1:
                 pos_end=pos_end+flank+1
@@ -65,6 +89,7 @@ def make_fasta(bedfile, reffile, outfasta_name, line_length,sample=None):
                 peak_names[peak_name] = [chrom, pos_start, pos_end]
                 outfasta.write(header + '\n' + seq + '\n')
         else: 
+            #print "flank is not greater than 0" 
             temp_start=pos_start 
             temp_end=temp_start+line_length
             split_index=0 
@@ -83,4 +108,6 @@ def make_fasta(bedfile, reffile, outfasta_name, line_length,sample=None):
                     temp_start=temp_end+1 
                     temp_end=temp_start+line_length
                     split_index+=1 
+       # pdb.set_trace() 
     return peak_names
+'''
